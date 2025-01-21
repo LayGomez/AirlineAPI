@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.Flight.Flight;
-import org.example.User.User;
+import org.example.Users.User;
 
 import java.time.LocalDateTime;
 

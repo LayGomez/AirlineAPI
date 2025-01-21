@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.Flight.Flight;
-
 import java.util.List;
-
 
 @Entity
 @Getter
@@ -37,4 +35,5 @@ public class Destination {
         this.name = name;
         this.country = country;
     }
+
 }

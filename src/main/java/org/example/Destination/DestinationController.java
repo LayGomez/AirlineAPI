@@ -1,49 +1,51 @@
 package org.example.Destination;
 
-import jakarta.websocket.server.PathParam;
-import lombok.Getter;
+import org.example.Destination.dtos.DestinationRequest;
+import org.example.Destination.dtos.DestinationResponse;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/destinations")
+@RequestMapping("${api-endpoint}/destinations")
 public class DestinationController {
-    DestinationService destinationService;
+    private final DestinationServices services;
 
-    public DestinationController(DestinationService destinationService) {
-        this.destinationService = destinationService;
+    public DestinationController(DestinationServices services) {
+        this.services = services;
     }
 
     @PostMapping
     public ResponseEntity<DestinationResponse> addNewDestination(@RequestBody DestinationRequest destinationRequest){
-        DestinationResponse destinationResponse = destinationService.addNewDestination(destinationRequest);
-        return new ResponseEntity<>(destinationResponse, HttpStatus.CREATED);
+        DestinationResponse destinationResponse = services.addNewDestination(destinationRequest);
+        return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(destinationResponse);
     }
 
     @GetMapping
-    public List<DestinationResponse> getAllDestinations(@RequestParam(name = "name", required = false) String name){
+    public List<DestinationResponse> viewAllDestinations(@RequestParam(name = "name", required = false) String name){
         if (name != null && !name.isEmpty()){
-            return destinationService.searchByName(name);
+            return services.searchByName(name);
         }
-        return destinationService.getAllDestinations();
+        return services.getAllDestinations();
     }
 
-    @GetMapping
-    public DestinationResponse getDestinationById(@PathVariable Long id){
-        return destinationService.findDestinationById(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<DestinationResponse> getDestinationById(@PathVariable Long id){
+        DestinationResponse destination = services.findDestinationById(id);
+        return ResponseEntity.status(HttpStatusCode.valueOf(200)).body(destination);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<DestinationResponse> updateDestination (@PathVariable Long id, @RequestBody DestinationRequest destinationRequest){
-        DestinationResponse destination = destinationService.updateDestination(id, destinationRequest);
+        DestinationResponse destination = services.updateDestination(id, destinationRequest);
         return new ResponseEntity<>(destination, HttpStatus.OK);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void deleteDestination(@PathVariable Long id){
-        destinationService.deleteDestinationById(id);
+        services.deleteDestinationById(id);
     }
 }

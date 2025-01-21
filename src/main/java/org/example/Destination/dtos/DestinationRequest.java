@@ -1,4 +1,4 @@
-package org.example.Destination;
+package org.example.Destination.dtos;
 
 public record DestinationRequest(
         String name,
