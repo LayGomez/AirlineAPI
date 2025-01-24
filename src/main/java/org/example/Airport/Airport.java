@@ -1,10 +1,11 @@
-package org.example.Destination;
+package org.example.Airport;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.Country.Country;
 import org.example.Flight.Flight;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Destination {
+public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -22,8 +23,9 @@ public class Destination {
     @Column
     private String name;
 
-    @Column
-    private String country;
+    @ManyToOne
+    @JoinColumn(name = "country_id", nullable = false)
+    private Country country;
 
     @OneToMany(mappedBy = "originAirport")
     private List<Flight> originFlights;
@@ -31,7 +33,7 @@ public class Destination {
     @OneToMany(mappedBy = "destinationAirport")
     private List<Flight> destinationFlights;
 
-    public Destination(String name, String country) {
+    public Airport(String name, Country country) {
         this.name = name;
         this.country = country;
     }

@@ -22,14 +22,14 @@ public class Booking {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @JoinColumn(name = "id_user", nullable = false)
     private User user;
 
     @Column(nullable = false)
     private int seats;
 
     @ManyToOne
-    @JoinColumn(name = "vuelo_id", nullable = false)
+    @JoinColumn(name = "flight_id", nullable = false)
     private Flight flight;
 
     @Column(nullable = false)

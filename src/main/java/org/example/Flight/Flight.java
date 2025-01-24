@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.Destination.Destination;
+import org.example.Airport.Airport;
 
 import java.time.LocalDateTime;
 
@@ -17,39 +17,34 @@ import java.time.LocalDateTime;
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @Column(nullable = false, name = "flight_id")
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "origin_id", nullable = false)
-    private Destination originAirport;
+    private Airport originAirport;
 
     @ManyToOne
     @JoinColumn(name = "destino_id", nullable = false)
-    private Destination destinationAirport;
+    private Airport destinationAirport;
 
-    @Column
     private LocalDateTime departureDate;
 
-    @Column
     private LocalDateTime arrivalDate;
 
-    @Column
     private int capacity;
 
-    @Column
     private int availableSeats;
 
-    @Column
-    private boolean state;
+    private boolean isAvailable;
 
-    public Flight(Destination originAirport, Destination destinationAirport, LocalDateTime departureDate, LocalDateTime arrivalDate, int capacity, int availableSeats, boolean state) {
+    public Flight(Airport originAirport, Airport destinationAirport, LocalDateTime departureDate, LocalDateTime arrivalDate, int capacity, int availableSeats, boolean isAvailable) {
         this.originAirport = originAirport;
         this.destinationAirport = destinationAirport;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
         this.capacity = capacity;
         this.availableSeats = availableSeats;
-        this.state = state;
+        this.isAvailable = isAvailable;
     }
 }
