@@ -1,4 +1,4 @@
-package org.example.Booking;
+package org.example.booking;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

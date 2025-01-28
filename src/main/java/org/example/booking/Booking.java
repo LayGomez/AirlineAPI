@@ -1,11 +1,11 @@
-package org.example.Booking;
+package org.example.booking;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.Flight.Flight;
+import org.example.flight.Flight;
 import org.example.Users.User;
 
 import java.time.LocalDateTime;
