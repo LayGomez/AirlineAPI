@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.Country.Country;
+import org.example.country.Country;
 import org.example.Users.User;
 
 @Entity
