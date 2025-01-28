@@ -1,4 +1,4 @@
-package org.example.Country.CountryExceptions;
+package org.example.country.CountryExceptions;
 
 public class CountryException extends RuntimeException {
     public CountryException(String message) {

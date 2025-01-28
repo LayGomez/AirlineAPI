@@ -1,6 +1,6 @@
-package org.example.Country;
+package org.example.country;
 
-import org.example.Country.CountryExceptions.CountryNotFoundException;
+import org.example.country.CountryExceptions.CountryNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

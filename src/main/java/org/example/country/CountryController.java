@@ -1,9 +1,7 @@
-package org.factoriaf5.countries;
+package org.example.country;
 
 import java.util.List;
 
-import org.example.Country.Country;
-import org.example.Country.CountryService;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,3 +39,4 @@ public class CountryController {
     }
 
 }
+

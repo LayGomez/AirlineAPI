@@ -1,4 +1,4 @@
-package org.example.Country.CountryExceptions;
+package org.example.country.CountryExceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

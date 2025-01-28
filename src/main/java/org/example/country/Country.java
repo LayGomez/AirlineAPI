@@ -1,4 +1,4 @@
-package org.example.Country;
+package org.example.country;
 
 import jakarta.persistence.*;
 import lombok.Getter;
