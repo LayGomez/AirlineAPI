@@ -1,8 +1,17 @@
+
+/* COUNTRIES */
 INSERT INTO countries (id_country, name) VALUES (default, 'USA');
 INSERT INTO countries (id_country, name) VALUES (default, 'France');
 INSERT INTO countries (id_country, name) VALUES (default, 'Ucrania');
 INSERT INTO countries (id_country, name) VALUES (default, 'Italy');
 INSERT INTO countries (id_country, name) VALUES (default, 'Canada');
+
+
+/* Airports */
+INSERT INTO airport (id_airport, name, id_country) VALUES (default, 'Seattle International Airport', 1);
+INSERT INTO airport (id_airport, name, id_country) VALUES (default, 'Roma Fiumicino Airport', 4);
+INSERT INTO airport (id_airport, name, id_country) VALUES (default, 'Paris Orly Airport', 2);
+INSERT INTO airport (id_airport, name, id_country) VALUES (default, 'Kiev Zhuliany International Airport', 3);
 
 
 /* Roles */

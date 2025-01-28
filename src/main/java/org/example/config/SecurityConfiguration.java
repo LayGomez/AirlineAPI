@@ -8,16 +8,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -37,6 +31,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http
                 .cors(withDefaults())
                 .csrf(csrf -> csrf.disable())
@@ -52,15 +47,24 @@ public class SecurityConfiguration {
                         .requestMatchers(endpoint + "/login").hasAnyRole("USER", "ADMIN")
                         .requestMatchers(endpoint + "/public").permitAll()
                         .requestMatchers(endpoint + "/private").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.GET, endpoint + "/destinations").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.POST, endpoint + "/destinations").hasRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET, endpoint + "/airports").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, endpoint + "/airports").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, endpoint + "/airports/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, endpoint + "/airports/**").hasRole("ADMIN")
+
+                        .requestMatchers(HttpMethod.GET, endpoint + "/countries").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, endpoint + "/countries").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .userDetailsService(jpaUserDetailsService)
                 .httpBasic(withDefaults())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED));
+
         http.headers(header -> header.frameOptions(frame -> frame.sameOrigin()));
+
         return http.build();
+
     }
 
     @Bean
