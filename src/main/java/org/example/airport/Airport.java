@@ -1,12 +1,12 @@
-package org.example.Airport;
+package org.example.airport;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.Country.Country;
-import org.example.Flight.Flight;
+import org.example.country.Country;
+import org.example.flight.Flight;
 import java.util.List;
 
 @Entity
@@ -17,14 +17,14 @@ import java.util.List;
 public class Airport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
+    @Column(nullable = false, name= "id_airport")
     private Long id;
 
     @Column
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "country_id", nullable = false)
+    @JoinColumn(name = "id_country", nullable = false)
     private Country country;
 
     @OneToMany(mappedBy = "originAirport")

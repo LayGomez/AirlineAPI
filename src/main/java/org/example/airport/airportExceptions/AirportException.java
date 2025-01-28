@@ -1,4 +1,4 @@
-package org.example.Airport.airportExceptions;
+package org.example.airport.airportExceptions;
 
 public class AirportException extends RuntimeException {
     public AirportException(String message) {
