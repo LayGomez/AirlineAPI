@@ -1,8 +1,7 @@
-package org.example.Flight;
+package org.example.flight;
 
-import org.example.Airport.Airport;
-import org.example.Flight.DTOs.FlightRequest;
-import org.example.Flight.DTOs.FlightResponse;
+import org.example.flight.DTOs.FlightRequest;
+import org.example.flight.DTOs.FlightResponse;
 
 public class FlightMapper {
     public static Flight fromRequest(FlightRequest flightRequest){

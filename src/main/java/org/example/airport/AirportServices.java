@@ -42,7 +42,7 @@ public class AirportServices {
         List<Airport> airports = repository.findByCountry_Name(countryName);
         return airports.stream()
                 .map(AirportMapper::toResponse)
-                .toList(); // Convierte a AirportResponse
+                .toList();
     }
     public List<AirportResponse> getAllAirports() {
         List<Airport> airportList = repository.findAll();

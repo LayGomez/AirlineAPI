@@ -1,4 +1,4 @@
-package org.example.Flight.FlightExceptions;
+package org.example.flight.FlightExceptions;
 
 public class FlightNotFoundException extends RuntimeException {
     public FlightNotFoundException(String message) {

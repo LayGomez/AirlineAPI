@@ -1,15 +1,13 @@
-package org.example.Flight.DTOs;
+package org.example.flight.DTOs;
 
-import org.example.Airport.Airport;
+import org.example.airport.Airport;
 
 import java.time.LocalDateTime;
 
-public record FlightRequest(
+public record FlightResponse(
         Airport originAirport,
         Airport destinationAirport,
         LocalDateTime departureDate,
-        LocalDateTime arrivalDate,
-        int capacity,
         int availableSeats,
         boolean isAvailable
 ) {

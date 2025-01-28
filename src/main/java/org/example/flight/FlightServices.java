@@ -1,10 +1,12 @@
-package org.example.Flight;
+package org.example.flight;
 
-import org.example.Flight.DTOs.FlightRequest;
-import org.example.Flight.DTOs.FlightResponse;
-import org.example.Flight.FlightExceptions.FlightNotFoundException;
+import org.example.flight.DTOs.FlightRequest;
+import org.example.flight.DTOs.FlightResponse;
+import org.example.flight.FlightExceptions.FlightException;
+import org.example.flight.FlightExceptions.FlightNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,11 +18,19 @@ public class FlightServices {
         this.repository = repository;
     }
 
-    public FlightResponse newFlight(FlightRequest flightRequest){
+    public FlightResponse addNewFlight(FlightRequest flightRequest){
+        if (flightRequest.departureDate().isBefore(LocalDateTime.now())) {
+            throw new FlightException("Departure date cannot be before now.");
+        }
         Flight flight = FlightMapper.fromRequest(flightRequest);
         Flight savedFlight = repository.save(flight);
         return FlightMapper.toResponse(savedFlight);
     }
+
+
+/*
+
+
 
     public List<FlightResponse> getAllFlights() {
         List<Flight> flightList = repository.findAll();
@@ -28,10 +38,10 @@ public class FlightServices {
                 .map(FlightMapper::toResponse).toList();
     }
 
-    /*
+
     public List<FlightResponse> searchFlightByCountry(String country) {
 
-    }*/
+    }
 
     public FlightResponse findFlightById(Long id) {
         Optional<Flight> optionalFlight = repository.findById(id);
@@ -63,7 +73,7 @@ public class FlightServices {
                     FlightNotFoundException("Flight Not Found");
         }
         repository.deleteById(id);
-    }
+    }*/
 
 
 }

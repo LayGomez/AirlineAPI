@@ -1,10 +1,7 @@
-package org.example.Flight;
+package org.example.flight;
 
-import org.example.Airport.Airport;
-import org.example.Airport.dtos.AirportRequest;
-import org.example.Airport.dtos.AirportResponse;
-import org.example.Flight.DTOs.FlightRequest;
-import org.example.Flight.DTOs.FlightResponse;
+import org.example.flight.DTOs.FlightRequest;
+import org.example.flight.DTOs.FlightResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -22,16 +19,16 @@ public class FlightController {
     }
 
     @PostMapping
-    public ResponseEntity<FlightResponse> addNewFLight(@RequestBody FlightRequest flightRequest){
-        FlightResponse flightResponse = services.newFlight(flightRequest);
+    public ResponseEntity<FlightResponse> addNewFlight(@RequestBody FlightRequest flightRequest){
+        FlightResponse flightResponse = services.addNewFlight(flightRequest);
         return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(flightResponse);
     }
-
+/*
     @GetMapping
     public List<FlightResponse> showAllFlights(@RequestParam(name = "country", required = false)String country){
-        /* if (country != null && !country.isEmpty()){
+         if (country != null && !country.isEmpty()){
             return services.searchFlightByCountry(country);
-        } */
+        }
         return services.getAllFlights();
     }
 
@@ -50,5 +47,5 @@ public class FlightController {
     @DeleteMapping("/{id}")
     public void deleteFlight(@PathVariable Long id) {
         services.deleteFlightById(id);
-    }
+    }*/
 }

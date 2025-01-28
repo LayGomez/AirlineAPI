@@ -1,4 +1,4 @@
-package org.example.Flight;
+package org.example.flight;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
