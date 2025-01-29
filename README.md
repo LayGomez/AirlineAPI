@@ -1,5 +1,16 @@
 # AirlineAPI
+This project is a Flight Booking System developed using Java and the Spring Framework. The system allows users to manage their flight reservations in a secure and efficient manner. It incorporates features such as:
 
+- Authentication via Basic Authentication to ensure that only authorized users can access specific endpoints. 
+- Role-Based Access Control (RBAC), where users can view their own reservations, and administrators can view all bookings in the system. 
+- CRUD operations (Create, Read, Update, Delete) for managing flight bookings. 
+- Reservation Locking: To avoid overbooking, a feature has been implemented to temporarily lock seats for 15 minutes once a user starts making a booking, guaranteeing the availability of seats. 
+- Dynamic Seat Management: When a reservation is made or canceled, the number of available seats for a particular flight is updated accordingly.
+
+The system is designed to support multiple users (with the role of "USER") and administrative users (with the role of "ADMIN"). Users can create, view, update, or cancel their own flight bookings, while administrators have access to all bookings in the system.
+## E-R model
+
+![ER_Ailine.png](/ER_Airline.png)
 
 # ENDPOINTS
 ## Airports
@@ -46,5 +57,42 @@ Create a flight
     "capacity": 15
 }
 ```
+## Booking
 
+
+| function         | ENDPOINT                                           |
+|------------------|----------------------------------------------------|
+| Show my bookings | GET localhost:8080/api/v1/bookings/my-reservations |
+| Create a booking | POST localhost:8080/api/v1/bookings                |  
+| Update a booking | PUT localhost:8080/api/v1/bookings/{id}            |  
+| Delete a booking | DELETE localhost:8080/api/v1/bookings/{id}         | 
+
+Create a booking
+```
+{
+"username": "usuario1",
+"seats": 4,
+"id_flight": 1
+}
+```
+JSON Response
+```
+{
+"id": 1,
+"username": "usuario1",
+"seats": 4,
+"flight": {
+"id": 1,
+"originAirport": "Seattle International Airport",
+"destinationAirport": "Roma Fiumicino Airport",
+"departureDate": "2025-11-21T11:30:00",
+"arrivalDate": "2025-11-22T11:28:00",
+"availableSeats": 11,
+"available": true
+},
+"date": "2025-01-30T00:09:35.81272084"
+}
+```
 ## Automated tasks
+
+This system allows users to book flights, view their bookings, and ensure seat availability, all while maintaining role-based security and locking seats temporarily during the reservation process. The entity relationships facilitate data consistency and allow you to manage users, flights, bookings, and airports effectively.
