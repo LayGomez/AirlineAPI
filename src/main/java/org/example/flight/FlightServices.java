@@ -1,5 +1,6 @@
 package org.example.flight;
 
+import org.example.Security.SecurityUtils;
 import org.example.airport.Airport;
 import org.example.airport.AirportRepository;
 import org.example.airport.airportExceptions.AirportNotFoundException;
@@ -51,7 +52,7 @@ public class FlightServices {
 
 
     public List<FlightResponse> getAllFlights() {
-        String role = getCurrentUserRole();
+        String role = SecurityUtils.getCurrentUserRole();
         boolean onlyAvailable = !role.equals("ROLE_ADMIN");
 
         if (onlyAvailable) {
@@ -125,13 +126,6 @@ public class FlightServices {
         repository.deleteById(id);
     }
 
-    private String getCurrentUserRole() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication.getAuthorities().stream()
-                .findFirst()
-                .orElseThrow(() -> new RuntimeException("unauthenticated user"))
-                .getAuthority();
-    }
 
 
 }

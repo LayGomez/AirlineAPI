@@ -33,12 +33,15 @@ public class Booking {
     private Flight flight;
 
     @Column(nullable = false)
-    private LocalDateTime date;
+    private LocalDateTime expiresAt;
 
-    public Booking(User user, int seats, Flight flight, LocalDateTime date) {
+    public Booking(User user, int seats, Flight flight) {
         this.user = user;
         this.seats = seats;
         this.flight = flight;
-        this.date = date;
+    }
+    @PrePersist
+    public void setExpirationTime() {
+        this.expiresAt = LocalDateTime.now().plusMinutes(15);
     }
 }

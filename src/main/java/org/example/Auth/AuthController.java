@@ -29,4 +29,5 @@ public class AuthController {
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
     }
+
 }

@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 
@@ -20,4 +21,6 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
     List<Flight> findByAirportName(String airportName);
 
     List<Flight> findByIsAvailable(boolean b);
+
+    Optional<Flight> findById(Long id);
 }

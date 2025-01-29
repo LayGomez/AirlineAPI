@@ -47,4 +47,5 @@ public class Flight {
         this.capacity = capacity;
         this.availableSeats = availableSeats;
     }
+
 }

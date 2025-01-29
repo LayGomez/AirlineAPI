@@ -62,6 +62,12 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.PUT, endpoint + "/flights/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, endpoint + "/flights/**").hasRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET, endpoint + "/bookings").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, endpoint + "/bookings/my-reservations").authenticated()
+                        .requestMatchers(HttpMethod.POST, endpoint + "/bookings").authenticated()
+                        .requestMatchers(HttpMethod.PUT, endpoint + "/bookings").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, endpoint + "/bookings").authenticated()
+
                         .anyRequest().authenticated())
                 .userDetailsService(jpaUserDetailsService)
                 .httpBasic(withDefaults())

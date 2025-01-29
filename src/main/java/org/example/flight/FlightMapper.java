@@ -33,13 +33,14 @@ public class FlightMapper {
     }
 
     public static FlightResponse toResponse(Flight flight){
-            return new FlightResponse(
-                    flight.getId(),
-                    flight.getOriginAirport().getName(),
-                    flight.getDestinationAirport().getName(),
-                    flight.getDepartureDate(),
-                    flight.getArrivalDate(),
-                    flight.getAvailableSeats(),
-                    flight.isAvailable());
+        return new FlightResponse(
+                flight.getId(),
+                flight.getOriginAirport().getName(),
+                flight.getDestinationAirport().getName(),
+                flight.getDepartureDate(),
+                flight.getArrivalDate(),
+                flight.getAvailableSeats(),
+                flight.isAvailable()
+        );
     }
 }

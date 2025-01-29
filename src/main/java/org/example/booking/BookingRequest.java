@@ -5,10 +5,9 @@ import org.example.Users.User;
 
 import java.time.LocalDateTime;
 
-public record BookingDTO(
-        User user,
+public record BookingRequest(
+        String username,
         int seats,
-        Flight flight,
-        LocalDateTime date
+        Long id_flight
 ) {
 }
