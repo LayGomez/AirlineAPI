@@ -1,3 +1,5 @@
+/* FLIGHTS */
+/* INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available )*/
 
 /* COUNTRIES */
 INSERT INTO countries (id_country, name) VALUES (default, 'USA');
@@ -20,11 +22,11 @@ INSERT INTO roles (id_role, name) VALUES (default, 'ROLE_ADMIN');
 
 /* Users */
 INSERT INTO users (id_user, username, password) VALUES (default, 'usuario1', '$2a$12$4MISlCi1OTqUs0CTC1DP0eaJWzXBEPWVECyv7R4XgAYzutBeJwG.S');
-INSERT INTO users (id_user, username, password) VALUES (default, 'usuario2', '$2a$12$MfjlnZqAfH1zjlvW6AZ9eOP/V7orWpHDtuWmMUajFTVrBl805/jUO');
+INSERT INTO users (id_user, username, password) VALUES (default, 'admin1', '$2a$12$MfjlnZqAfH1zjlvW6AZ9eOP/V7orWpHDtuWmMUajFTVrBl805/jUO');
 
 /* Profiles */
 INSERT INTO profiles (id_profile,email, address, user_id, country_id) VALUES (default,'usuario1@mail.com', 'portal 1',1,2);
-INSERT INTO profiles (id_profile,email, address, user_id, country_id) VALUES (default,'usuario2@mail.com', 'portal 1',2,3);
+INSERT INTO profiles (id_profile,email, address, user_id, country_id) VALUES (default,'admin1@mail.com', 'portal 1',2,3);
 
 /* Roles Users */
 INSERT INTO roles_users (role_id, user_id) VALUES (1, 1);

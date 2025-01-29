@@ -17,4 +17,6 @@ public class GlobalHandlerAirportException {
     public ResponseEntity<String> handleAirportNotFoundException(AirportNotFoundException exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
+
+
 }

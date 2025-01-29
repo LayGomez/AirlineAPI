@@ -1,5 +1,6 @@
 package org.example.airport;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,9 +29,11 @@ public class Airport {
     private Country country;
 
     @OneToMany(mappedBy = "originAirport")
+    @JsonIgnore
     private List<Flight> originFlights;
 
     @OneToMany(mappedBy = "destinationAirport")
+    @JsonIgnore
     private List<Flight> destinationFlights;
 
     public Airport(String name, Country country) {

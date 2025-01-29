@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, name = "flight_id")
+    @Column(nullable = false, name = "id_flight")
     private Long id;
 
     @ManyToOne
@@ -26,7 +26,7 @@ public class Flight {
     private Airport originAirport;
 
     @ManyToOne
-    @JoinColumn(name = "destino_id", nullable = false)
+    @JoinColumn(name = "destination_id", nullable = false)
     private Airport destinationAirport;
 
     private LocalDateTime departureDate;
@@ -46,6 +46,6 @@ public class Flight {
         this.arrivalDate = arrivalDate;
         this.capacity = capacity;
         this.availableSeats = availableSeats;
-        this.isAvailable = isAvailable;
+        this.isAvailable = true;
     }
 }

@@ -5,9 +5,11 @@ import org.example.airport.Airport;
 import java.time.LocalDateTime;
 
 public record FlightResponse(
-        Airport originAirport,
-        Airport destinationAirport,
+        Long id,
+        String originAirport,
+        String destinationAirport,
         LocalDateTime departureDate,
+        LocalDateTime arrivalDate,
         int availableSeats,
         boolean isAvailable
 ) {

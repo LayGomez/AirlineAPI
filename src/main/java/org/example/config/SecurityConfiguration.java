@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.client.HttpServerErrorException;
 
 
 import static org.springframework.security.config.Customizer.withDefaults;
@@ -48,13 +49,19 @@ public class SecurityConfiguration {
                         .requestMatchers(endpoint + "/public").permitAll()
                         .requestMatchers(endpoint + "/private").hasRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.GET, endpoint + "/countries").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, endpoint + "/countries").hasRole("ADMIN")
+
                         .requestMatchers(HttpMethod.GET, endpoint + "/airports").hasAnyRole("USER", "ADMIN")
                         .requestMatchers(HttpMethod.POST, endpoint + "/airports").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, endpoint + "/airports/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, endpoint + "/airports/**").hasRole("ADMIN")
 
-                        .requestMatchers(HttpMethod.GET, endpoint + "/countries").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers(HttpMethod.POST, endpoint + "/countries").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, endpoint + "/flights").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, endpoint + "/flights").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, endpoint + "/flights/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, endpoint + "/flights/**").hasRole("ADMIN")
+
                         .anyRequest().authenticated())
                 .userDetailsService(jpaUserDetailsService)
                 .httpBasic(withDefaults())
