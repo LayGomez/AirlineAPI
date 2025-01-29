@@ -28,8 +28,7 @@ public class FlightMapper {
                 flightRequest.departureDate(),
                 flightRequest.arrivalDate(),
                 flightRequest.capacity(),
-                flightRequest.capacity(),
-                flightRequest.isAvailable()
+                flightRequest.capacity()
         );
     }
 

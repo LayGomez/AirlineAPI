@@ -25,10 +25,7 @@ public record FlightRequest(
         int capacity,
 
         @NotNull(message = "The number of places available cannot be empty")
-        int availableSeats,
-
-        @NotNull(message = "Available cannot be empty")
-        boolean isAvailable
+        int availableSeats
 
 ) {
 }

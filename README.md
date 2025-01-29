@@ -1,5 +1,6 @@
 # AirlineAPI
 
+
 # ENDPOINTS
 ## Airports
 
@@ -42,6 +43,8 @@ Create a flight
     "destinationAirport": "Roma Fiumicino Airport",
     "departureDate": "2025-11-20T11:28",
     "arrivalDate": "2025-11-21T11:28",
-    "capacity": 0
+    "capacity": 15
 }
 ```
+
+## Automated tasks

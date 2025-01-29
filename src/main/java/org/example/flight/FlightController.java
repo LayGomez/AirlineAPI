@@ -3,6 +3,7 @@ package org.example.flight;
 import jakarta.validation.Valid;
 import org.example.flight.DTOs.FlightRequest;
 import org.example.flight.DTOs.FlightResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -49,6 +50,16 @@ public class FlightController {
         List<FlightResponse> flights = services.findFlightsByDestinationCountry(country);
         return ResponseEntity.ok(flights);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<FlightResponse> updateFlight (@PathVariable Long id, @Valid @RequestBody FlightRequest flightRequest){
+        FlightResponse flight = services.updateFlight(id, flightRequest);
+        return new ResponseEntity<>(flight, HttpStatus.OK);
+    }
+    @DeleteMapping("/{id}")
+    public void deleteFlight(@PathVariable Long id) {
+        services.deleteFlightById(id);
+    }
 /*
     @GetMapping("/search/by-departure-date")
     public ResponseEntity<List<Flight>> searchByDepartureDate(@RequestParam LocalDateTime departureDate) {
@@ -63,20 +74,6 @@ public class FlightController {
         List<Flight> flights = services.findFlightsByAirportName(airportName);
         return ResponseEntity.ok(flights);
     }*/
-
-    /*
-    @GetMapping("/{id}")
-
-    @PutMapping("/{id}")
-    public ResponseEntity<FlightResponse> updateFlight (@PathVariable Long id, @RequestBody FlightRequest flightRequest){
-        FlightResponse flight = services.updateFlight(id, flightRequest);
-        return new ResponseEntity<>(flight, HttpStatus.OK);
-    }
-*/
-    @DeleteMapping("/{id}")
-    public void deleteFlight(@PathVariable Long id) {
-        services.deleteFlightById(id);
-    }
 
 
 }

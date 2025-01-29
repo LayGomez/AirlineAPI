@@ -22,7 +22,7 @@ VALUES (default, 3, 2,'2025-11-21 11:30:00', '2025-11-21 13:28:00', 15, 15, true
 INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available)
 VALUES (default, 4, 1, '2025-11-20 11:30:00', '2025-11-21 16:28:00', 15, 15, true);
 INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available)
-VALUES (default, 1, 3, '2025-01-25 11:30:00', '2025-01-25 12:28:00', 15, 15, false);
+VALUES (default, 1, 3, '2025-01-25 11:30:00', '2025-01-25 12:28:00', 15, 15, true);
 
 /* Roles */
 INSERT INTO roles (id_role, name) VALUES (default, 'ROLE_USER');

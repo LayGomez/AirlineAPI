@@ -39,13 +39,12 @@ public class Flight {
 
     private boolean isAvailable;
 
-    public Flight(Airport originAirport, Airport destinationAirport, LocalDateTime departureDate, LocalDateTime arrivalDate, int capacity, int availableSeats, boolean isAvailable) {
+    public Flight(Airport originAirport, Airport destinationAirport, LocalDateTime departureDate, LocalDateTime arrivalDate, int capacity, int availableSeats) {
         this.originAirport = originAirport;
         this.destinationAirport = destinationAirport;
         this.departureDate = departureDate;
         this.arrivalDate = arrivalDate;
         this.capacity = capacity;
         this.availableSeats = availableSeats;
-        this.isAvailable = true;
     }
 }
