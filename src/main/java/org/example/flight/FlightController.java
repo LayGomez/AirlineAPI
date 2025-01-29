@@ -5,6 +5,8 @@ import org.example.flight.DTOs.FlightRequest;
 import org.example.flight.DTOs.FlightResponse;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +26,9 @@ public class FlightController {
         return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(flightResponse);
     }
 
+
     @GetMapping
-    public List<FlightResponse> showAllFlights(@RequestParam(name = "country", required = false)String country){
+    public List<FlightResponse> showAllFlights() {
         return services.getAllFlights();
     }
 
@@ -74,4 +77,6 @@ public class FlightController {
     public void deleteFlight(@PathVariable Long id) {
         services.deleteFlightById(id);
     }
+
+
 }

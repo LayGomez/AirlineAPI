@@ -4,6 +4,8 @@ import org.example.flight.DTOs.FlightRequest;
 import org.example.flight.DTOs.FlightResponse;
 import org.example.flight.FlightExceptions.FlightException;
 import org.example.flight.FlightExceptions.FlightNotFoundException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -46,10 +48,22 @@ public class FlightServices {
     }
 
 
+
     public List<FlightResponse> getAllFlights() {
-        List<Flight> flightList = repository.findAll();
-        return flightList.stream()
-                .map(FlightMapper::toResponse).toList();
+        String role = getCurrentUserRole();
+        boolean onlyAvailable = !role.equals("ROLE_ADMIN");
+
+        if (onlyAvailable) {
+            List<Flight> flightList = repository.findByIsAvailable(true);
+            return flightList.stream()
+                    .map(FlightMapper::toResponse)
+                    .toList();
+        } else {
+            List<Flight> flightList = repository.findAll();
+            return flightList.stream()
+                    .map(FlightMapper::toResponse)
+                    .toList();
+        }
     }
 
     public FlightResponse findFlightById(Long id) {
@@ -85,11 +99,6 @@ public class FlightServices {
     public List<Flight> findFlightsByDepartureDate(LocalDateTime departureDate) {
         return repository.findByDepartureDate(departureDate);
     }
-
-   // search by airport name
-    public List<Flight> findFlightsByAirportName(String airportName) {
-        return repository.findByAirportName(airportName);
-    }
 */
 
 
@@ -119,6 +128,14 @@ public class FlightServices {
             throw new FlightNotFoundException("Flight Not Found");
         }
         repository.deleteById(id);
+    }
+
+    private String getCurrentUserRole() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getAuthorities().stream()
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("unauthenticated user"))
+                .getAuthority();
     }
 
 

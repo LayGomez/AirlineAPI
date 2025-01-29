@@ -40,8 +40,8 @@ Create a flight
 {
     "originAirport": "Seattle International Airport",
     "destinationAirport": "Roma Fiumicino Airport",
-    "departureDate": "2025-01-30T11:28",
-    "arrivalDate": "2025-01-31T11:28",
+    "departureDate": "2025-11-20T11:28",
+    "arrivalDate": "2025-11-21T11:28",
     "capacity": 0
 }
 ```

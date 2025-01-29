@@ -18,4 +18,6 @@ public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     @Query("SELECT f FROM Flight f WHERE LOWER(f.originAirport.name) LIKE LOWER(CONCAT('%', :name, '%'))")
     List<Flight> findByAirportName(String airportName);
+
+    List<Flight> findByIsAvailable(boolean b);
 }

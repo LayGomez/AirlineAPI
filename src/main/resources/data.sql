@@ -1,6 +1,3 @@
-/* FLIGHTS */
-/* INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available )*/
-
 /* COUNTRIES */
 INSERT INTO countries (id_country, name) VALUES (default, 'USA');
 INSERT INTO countries (id_country, name) VALUES (default, 'France');
@@ -15,6 +12,17 @@ INSERT INTO airport (id_airport, name, id_country) VALUES (default, 'Roma Fiumic
 INSERT INTO airport (id_airport, name, id_country) VALUES (default, 'Paris Orly Airport', 2);
 INSERT INTO airport (id_airport, name, id_country) VALUES (default, 'Kiev Zhuliany International Airport', 3);
 
+/* FLIGHTS */
+INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available)
+VALUES (default, 1, 2, '2025-11-21 11:30:00', '2025-11-22 11:28:00', 15, 15, true);
+INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available)
+VALUES (default, 2, 3, '2025-11-21 11:30:00', '2025-11-21 14:28:00', 15, 15, true);
+INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available)
+VALUES (default, 3, 2,'2025-11-21 11:30:00', '2025-11-21 13:28:00', 15, 15, true);
+INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available)
+VALUES (default, 4, 1, '2025-11-20 11:30:00', '2025-11-21 16:28:00', 15, 15, true);
+INSERT INTO flights (id_flight, origin_id, destination_id, departure_date, arrival_date, capacity, available_seats, is_available)
+VALUES (default, 1, 3, '2025-01-25 11:30:00', '2025-01-25 12:28:00', 15, 15, false);
 
 /* Roles */
 INSERT INTO roles (id_role, name) VALUES (default, 'ROLE_USER');

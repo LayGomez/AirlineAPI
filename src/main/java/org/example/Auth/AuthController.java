@@ -15,6 +15,7 @@ import java.util.Map;
 @RestController
 @RequestMapping(path = "${api-endpoint}")
 public class AuthController {
+
     @GetMapping(path = "/login")
     public ResponseEntity<Map<String, String>> login() {
 
