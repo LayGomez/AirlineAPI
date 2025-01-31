@@ -24,17 +24,29 @@ public class Profile {
 
     private String address;
 
+    private String profilePicture;
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id_user")
     private User user;
 
-    @ManyToOne@JoinColumn(name = "country_id", nullable = true)
+
+    @ManyToOne
+    @JoinColumn(name = "country_id", nullable = true)
     private Country country;
 
-    public Profile(User user, String address, String email, Country country) {
+    public Profile(User user, String address, String email, Country country, String profilePicture) {
         this.user = user;
         this.address = address;
         this.email = email;
         this.country = country;
+        this.profilePicture = profilePicture;
     }
+
+    @PrePersist
+    public void setDefaultProfilePicture() {
+        if (this.profilePicture == null || this.profilePicture.isBlank()) {
+            this.profilePicture = "/resources/static";
+        }
+    }
+
 }

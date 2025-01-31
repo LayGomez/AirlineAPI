@@ -36,7 +36,9 @@ public class BookingServices {
 
         Flight flight = flightRepository.findById(bookingRequest.id_flight())
                 .orElseThrow(() -> new FlightNotFoundException("Flight not found: " + bookingRequest.id_flight()));
-
+        if (!flight.isAvailable()) {
+            throw new FlightException("This flight is not available for booking.");
+        }
         if (flight.getAvailableSeats() < bookingRequest.seats()) {
             throw new FlightException("Not enough available seats for this flight.");
         }
