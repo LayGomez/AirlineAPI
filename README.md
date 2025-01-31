@@ -1,4 +1,4 @@
-# AirlineAPI
+# AirlineAPI ✈️
 This project is a Flight Booking System developed using Java and the Spring Framework. The system allows users to manage their flight reservations in a secure and efficient manner. It incorporates features such as:
 
 - Authentication via Basic Authentication to ensure that only authorized users can access specific endpoints. 
@@ -8,11 +8,12 @@ This project is a Flight Booking System developed using Java and the Spring Fram
 - Dynamic Seat Management: When a reservation is made or canceled, the number of available seats for a particular flight is updated accordingly.
 
 The system is designed to support multiple users (with the role of "USER") and administrative users (with the role of "ADMIN"). Users can create, view, update, or cancel their own flight bookings, while administrators have access to all bookings in the system.
-## E-R model
+## E-R model 
 
 ![ER_Ailine.png](/ER_Airline.png)
 
-# ENDPOINTS
+# 🎯 ENDPOINTS
+
 ## Airports
 
 | function                  | ENDPOINT                                             |
@@ -24,19 +25,23 @@ The system is designed to support multiple users (with the role of "USER") and a
 | Update airport            | PUT localhost:8080/api/v1/airports/{id}              |  
 | Delete airport            | DELETE localhost:8080/api/v1/airports/{id}           |  
 
-Create an airport
-```
+**Create an airport**
+```JSON
 {
 "name": "Miami International Airport",
 "countryName": "USA"
 }
 
 ```
-## Countries
+##  🇪🇸 Countries
 
+| function             | ENDPOINT                                 |
+|----------------------|------------------------------------------|
+| Show all countries   | GET localhost:8080/api/v1/countries      |
+| Search country by id | GET localhost:8080/api/v1/countries/{id} |  
+| Create country       | POST localhost:8080/api/v1/countries     |  
 
-
-## Flights
+## ✈️ Flights
 
 | function                             | ENDPOINT                                                                          |
 |--------------------------------------|-----------------------------------------------------------------------------------|
@@ -48,7 +53,7 @@ Create an airport
 | Delete flight                        | DELETE localhost:8080/api/v1/airports/{id}                                        | 
 
 Create a flight
-```
+```JSON
 {
     "originAirport": "Seattle International Airport",
     "destinationAirport": "Roma Fiumicino Airport",
@@ -68,7 +73,7 @@ Create a flight
 | Delete a booking | DELETE localhost:8080/api/v1/bookings/{id}         | 
 
 Create a booking
-```
+```JSON
 {
 "username": "usuario1",
 "seats": 4,
@@ -76,7 +81,7 @@ Create a booking
 }
 ```
 JSON Response
-```
+```JSON
 {
 "id": 1,
 "username": "usuario1",
@@ -93,6 +98,19 @@ JSON Response
 "date": "2025-01-30T00:09:35.81272084"
 }
 ```
-## Automated tasks
+## ✈️ Automated Tasks
 
-This system allows users to book flights, view their bookings, and ensure seat availability, all while maintaining role-based security and locking seats temporarily during the reservation process. The entity relationships facilitate data consistency and allow you to manage users, flights, bookings, and airports effectively.
+This project includes two automated tasks to manage flight availability and reservations efficiently.<br>
+### ⏳ Flight Availability Check (Every 30 seconds)
+
+- Runs every 30,000 milliseconds (30 seconds).
+- Checks if flights meet the conditions to be available:<br>
+   ✅ Future date (the flight has not departed). <br>
+   ✅ Seats available (there are still open seats).
+
+### 🎟️ Temporary Seat Reservation (15 minutes)
+
+- When a flight is being booked, the selected seats are reserved for 15 minutes.
+- If the reservation is not completed within 15 minutes, the seats are released.
+
+These automated tasks ensure a smooth booking process and real-time flight availability updates! 🚀
